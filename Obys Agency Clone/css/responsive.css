@@ -8,10 +8,21 @@
 
 
     #loader #line1{
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        justify-content: start;
-        align-items: start;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: start;
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: start;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
         width: fit-content;
     }
 
@@ -20,6 +31,8 @@
     }
 
     #loader #line1 h2 span{
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
         width: fit-content;
     }
 
@@ -53,7 +66,9 @@
         width: 100%;
         top: 0;
         left: 0;
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         padding: 1vw 5vw 0 3vw;
     }
     #sticky-nav #logo svg{
@@ -117,7 +132,10 @@
     }
 
     #page3 #page3-boxes{
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         padding: 3vw;
     }
 
@@ -176,6 +194,8 @@
     }
 
     #page3 #page3-boxes #orange-circle{
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
     }
 
@@ -198,6 +218,8 @@
     }
 
     #page4 #left-para{
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
         height: fit-content;
         margin: 8vw 0 4vw;
     }
@@ -208,7 +230,10 @@
 
     #page4 #para-with-img{
         margin-bottom: 70vh;
-        flex-direction: column-reverse;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+            -ms-flex-direction: column-reverse;
+                flex-direction: column-reverse;
         gap: 7vw;
     }
     #page4 #para-with-img #para-img{
@@ -253,13 +278,24 @@
 
     footer #footer-box{
         height: 70vh;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: start;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: space-evenly;
+            -ms-flex-pack: space-evenly;
+                justify-content: space-evenly;
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: start;
     }
 
     footer #footer-box .box1{
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
         height: fit-content;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
         width: fit-content;
     }
 
@@ -289,9 +325,16 @@
     
     #loader{
         padding: 3vw;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
     }
 
     /* Sticky nav */
@@ -392,6 +435,8 @@
     }
 
     #page3 #page3-boxes #orange-circle{
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
     }
 
