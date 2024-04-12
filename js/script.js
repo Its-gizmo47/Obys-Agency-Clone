@@ -164,7 +164,7 @@ function videoCircleAnimation(){
         }
         function chk(){
             if(e.target.matches("#video-overlay-img")){
-                playVid(0.6)
+                playVid(0.1)
             }
         }
         chk();
