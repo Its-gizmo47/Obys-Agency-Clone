@@ -206,7 +206,8 @@ function videoCircleAnimation(){
         }
     }
     width();
-
+    }
+}
 
  
 function imgEffect(){
