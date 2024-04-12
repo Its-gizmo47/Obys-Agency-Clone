@@ -206,7 +206,6 @@ function videoCircleAnimation(){
         }
     }
     width();
-}
 
 function imgEffect(){
     Shery.imageEffect(".img-box", {
