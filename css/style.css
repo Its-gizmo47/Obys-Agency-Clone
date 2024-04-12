@@ -47,15 +47,19 @@ html,body{
 
 /* cursor circle */
 
-.mousefollower{
-    height: 2vw;
-    width: 2vw;
-    background-color: white;
+#crsr-circle{
+    position: fixed;
+    z-index: 999;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    height: 2.5vw;
+    width: 2.5vw;
+    border-radius: 50%;
     border: 1.5px solid #adadad;
     mix-blend-mode: difference;
+    pointer-events: none;
 }
-
-
 
 /* flag hover effect */
 
@@ -80,11 +84,20 @@ html,body{
 #loader{
     position: fixed;
     z-index: 9999;
-    /* display: none; */
     height: 100vh;
     width: 100%;
     background-color: #0b0b0b;
     padding: 8vw 5vw;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient : vertical;
+    -webkit-box-direction : normal;
+        -ms-flex-direction : column;
+            flex-direction : column;
+    -webkit-box-pack:center;
+        -ms-flex-pack:center;
+            justify-content:center;
 }
 
 #loader .lines{
