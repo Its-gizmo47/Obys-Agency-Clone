@@ -164,18 +164,18 @@ function videoCircleAnimation(){
         }
         function chk(){
             if(e.target.matches("#video-overlay-img")){
-                playVid(0.1)
+                playVid(0.6)
             }
         }
         chk();
 
-        function width(){
+        function smallSc(){
             var width = window.innerWidth;
             if(width <= 768){
                 playVid(0);
                 }
              }
-         width();
+         smallSc();
         });
 
     function vidCircle(){
@@ -272,11 +272,11 @@ loaderAnimation();
 videoCircleAnimation();
 locomotiveAnimation();
 
-function width(){
+function widthEffect(){
     var width = window.innerWidth;
     if(width >= 768){
         imgEffect();
         flagEffect();
     }
 }
-width();
+widthEffect();
