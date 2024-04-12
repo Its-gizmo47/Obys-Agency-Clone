@@ -1,12 +1,11 @@
 function mouseFollower(){
-    Shery.mouseFollower({
-        ease: "cubic-bezier(0.23, 1, 0.320, 1)",
-        duration: .1,
-      });
-      
-    Shery.makeMagnet("#sticky-nav #menu", {
-    });
-    Shery.makeMagnet("#nav-part2 h2", {
+    document.addEventListener("mousemove",(e)=>{
+        gsap.to("#crsr-circle",{
+            x: e.x,
+            y: e.y,
+            duration: .1,
+            // zIndex: 1,
+        });
     });
 }
 function loaderAnimation(){
@@ -65,6 +64,7 @@ function loaderAnimation(){
         y:120,
         stagger:0.2,
         duration: 0.5,
+        opacity:0,
     },"-=.3");
     tl.to("#loader",{
         display: "none",
@@ -127,65 +127,83 @@ function videoCircleAnimation(){
 
     // video Click event handler
 
-    page2Vid.addEventListener("click",()=>{
-        if(!vid.paused){  
-            videoCntrl();
-            vid.pause();
-            gsap.to("#page2 #video-circle",{
-                scale: 1,
-                duration: 0.3,
-                ease: Back.easeInOut,
-            });
-            gsap.to("#video-overlay-img",{
-                opacity:1,
-                duration: .2,
-            });
-        } 
-        else if(vid.paused){
-            videoCntrl();
-            vid.play();
-            gsap.to("#page2 #video-circle",{
-                scale: 0.6,
-                duration: 0.3,
-                ease: Back.easeInOut,
-            },);
-            gsap.to("#video-overlay-img",{
-                opacity:0,
-                duration: .2,
-            });
-            
-        }
-    });
-
-    // video Mouse Leave event handler
-
-    page2Vid.addEventListener("mouseleave", (e)=>{
-        gsap.to(".mousefollower",{
-            opacity: 1,
-        });
-        gsap.to("#video-circle",{
-            left : "80%",
-            top: "0%",
-            duration: .4,
-    });
-        videoCircle.style.left = `80%`;
-        videoCircle.style.top = `0`;
-    });
-
-    // video Mouse Enter / Mouse Move event handler
-    page2Vid.addEventListener("mouseenter", ()=>{
-        page2Vid.addEventListener("mousemove",(evt) =>{
-                gsap.to(".mousefollower",{
-                    opacity: 0,
+    page2Vid.addEventListener("click",(e)=>{
+        // const onEvent = e.target.matches(page2Vid)
+        
+        function playVid(){
+            if(!vid.paused){  
+                videoCntrl();
+                vid.pause();
+                gsap.to("#page2 #video-circle",{
+                    scale: 1,
+                    duration: 0.3,
+                    ease: Back.easeInOut,
                 });
-                gsap.to("#video-circle",{
-                    left : evt.x - 450,
-                    top : evt.y - 200,
-                    duration: .4,
+                gsap.to("#video-overlay-img",{
+                    opacity:1,
+                    duration: .2,
+                });
+            } 
+            else if(vid.paused){
+                videoCntrl();
+                vid.play();
+                gsap.to("#page2 #video-circle",{
+                    scale: 0.6,
+                    duration: 0.3,
+                    ease: Back.easeInOut,
+                },);
+                gsap.to("#video-overlay-img",{
+                    opacity:0,
+                    duration: .2,
+                });
+                
+            }
+        }
+        function chk(){
+            if(e.target.matches("#video-overlay-img")){
+                playVid()
+            }
+        }
+        chk();
+    });
+
+    function vidCircle(){
+            // video Mouse Leave event handler
+
+        page2Vid.addEventListener("mouseleave", (e)=>{
+            gsap.to("#crsr-circle",{
+                opacity: 1,
+                scale:1,
+            });
+            gsap.to("#video-circle",{
+                left : "80%",
+                top: "0%",
+                duration: .4,
+        });
+    });
+
+        // video Mouse Enter / Mouse Move event handler
+        page2Vid.addEventListener("mouseenter", ()=>{
+            page2Vid.addEventListener("mousemove",(evt) =>{
+                    gsap.to("#crsr-circle",{
+                        opacity: 0,
+                        scale:0,
+                    });
+                    gsap.to("#video-circle",{
+                        left : evt.x - 450,
+                        top : evt.y - 200,
+                        duration: .4,
+                });
             });
         });
-    })
-
+    }
+    function width(){
+        var width = window.innerWidth;
+        if(width >= 768){
+            vidCircle();
+        }
+    }
+    width();
 }
 
 function imgEffect(){
@@ -195,6 +213,10 @@ function imgEffect(){
       config:{
           "a":{"value":0,"range":[0,30]},"b":{"value":0.69,"range":[-1,1]},"zindex":{"value":"99","range":[-9999999,9999999]},"aspect":{"value":0.7414320193081255},"ignoreShapeAspect":{"value":true},"shapePosition":{"value":{"x":0,"y":0}},"shapeScale":{"value":{"x":0.5,"y":0.5}},"shapeEdgeSoftness":{"value":0,"range":[0,0.5]},"shapeRadius":{"value":0,"range":[0,2]},"currentScroll":{"value":0},"scrollLerp":{"value":0.07},"gooey":{"value":true},"infiniteGooey":{"value":true},"growSize":{"value":3.89,"range":[1,15]},"durationOut":{"value":0.96,"range":[0.1,5]},"durationIn":{"value":1.45,"range":[0.1,5]},"displaceAmount":{"value":0.5},"masker":{"value":false},"maskVal":{"value":1,"range":[1,5]},"scrollType":{"value":0},"geoVertex":{"range":[1,64],"value":1},"noEffectGooey":{"value":true},"onMouse":{"value":1},"noise_speed":{"value":0.92,"range":[0,10]},"metaball":{"value":0.46,"range":[0,2]},"discard_threshold":{"value":0.51,"range":[0,1]},"antialias_threshold":{"value":0,"range":[0,0.1]},"noise_height":{"value":0.5,"range":[0,2]},"noise_scale":{"value":6.87,"range":[0,100]}
       },
+    });
+    Shery.makeMagnet("#sticky-nav #menu", {
+    });
+    Shery.makeMagnet("#nav-part2 h2", {
     });
 }
 function flagEffect(){
@@ -238,81 +260,12 @@ mouseFollower();
 loaderAnimation();
 videoCircleAnimation();
 locomotiveAnimation();
-imgEffect();
-flagEffect();
 
-
-// function scrollAnimation(){
-
-
-//     gsap.from("#page1-hero .hero",{
-//         y:-50,
-//         opacity: 0,
-//         duration: 1,
-//         ease: 'power3.out',
-//         // overwrite: 'auto',
-//         // scrollTrigger: {
-//         //     trigger: ".hero",
-//         //     scrub: true,
-//         //     markers: true,
-//         //     start: "top 8%",
-//         //     end: "top 4%",
-//         // }
-//         scrollTrigger:{
-//             trigger:".container",
-//             scroller:"main",
-//             markers:true,
-//             start: "top 10%",
-//             end: "top 0%",
-//             scrub:2,
-//             pin: true
-//         }
-//     })
-
-   
-
-//     // gsap.utils.toArray('#page1').forEach(section => {
-//     //     const elems = section.querySelectorAll('nav');
-//     //     // Set starting params for sections
-//     //     gsap.set(elems, {
-//     //       y: 50,
-//     //       opacity: 0,
-//     //       duration: 1,
-//     //       ease: 'power3.out',
-//     //       overwrite: 'auto',
-//     //     });
-        
-//     //     ScrollTrigger.create({
-//     //       trigger: section,
-//     //       start: 'top 10%',
-//     //       end: 'top 15%',
-//     //       markers: true,
-//     //       onEnter: () => gsap.to(elems, {
-//     //         y: 0,
-//     //         opacity: 1,
-//     //         stagger: 0.2,
-//     //       }),
-//     //       onLeave: () => gsap.to(elems, {
-//     //         y: -50,
-//     //         opacity: 0,
-//     //         stagger: 0.2,
-//     //       }),
-//     //       onEnterBack: () => gsap.to(elems, {
-//     //         y: 0,
-//     //         opacity: 1,
-//     //         stagger: -0.2,
-//     //       }),
-//     //       onLeaveBack: () => gsap.to(elems, {
-//     //         y: 50,
-//     //         opacity: 0,
-//     //         stagger: -0.2,
-//     //       }),
-//     //     });
-//     //   })
-
-// }
-
-// scrollAnimation()
-
-
-//   🎨
+function width(){
+    var width = window.innerWidth;
+    if(width >= 768){
+        imgEffect();
+        flagEffect();
+    }
+}
+width();
