@@ -49,14 +49,14 @@ html,body{
 
 #crsr-circle{
     position: fixed;
-    z-index: 999;
+    z-index: 9999;
     -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     height: 2.5vw;
     width: 2.5vw;
     border-radius: 50%;
-    border: 1.5px solid #adadad;
+    border: 2px solid #adadad;
     mix-blend-mode: difference;
     pointer-events: none;
 }
