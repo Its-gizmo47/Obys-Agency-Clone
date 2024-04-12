@@ -55,6 +55,7 @@ html,body{
             transform: translate(-50%, -50%);
     height: 2.5vw;
     width: 2.5vw;
+    opacity: 0;
     border-radius: 50%;
     border: 2px solid #adadad;
     mix-blend-mode: difference;
