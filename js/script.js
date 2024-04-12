@@ -206,10 +206,8 @@ function videoCircleAnimation(){
         }
     }
     width();
-    }
-}
-}
- 
+    });
+} 
 
 
 
