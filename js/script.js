@@ -130,7 +130,7 @@ function videoCircleAnimation(){
     page2Vid.addEventListener("click",(e)=>{
         // const onEvent = e.target.matches(page2Vid)
         
-        function playVid(){
+        function playVid(scl){
             if(!vid.paused){  
                 videoCntrl();
                 vid.pause();
@@ -148,7 +148,7 @@ function videoCircleAnimation(){
                 videoCntrl();
                 vid.play();
                 gsap.to("#page2 #video-circle",{
-                    scale: 0.6,
+                    scale: scl,
                     duration: 0.3,
                     ease: Back.easeInOut,
                 },);
@@ -161,11 +161,19 @@ function videoCircleAnimation(){
         }
         function chk(){
             if(e.target.matches("#video-overlay-img")){
-                playVid()
+                playVid(0.6)
             }
         }
         chk();
-    });
+
+        function width(){
+            var width = window.innerWidth;
+            if(width >= 768){
+                playVid(1);
+                }
+             }
+         width();
+        });
 
     function vidCircle(){
             // video Mouse Leave event handler
