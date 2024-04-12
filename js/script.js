@@ -168,7 +168,7 @@ function videoCircleAnimation(){
 
         function width(){
             var width = window.innerWidth;
-            if(width >= 768){
+            if(width <= 768){
                 playVid(0);
                 }
              }
