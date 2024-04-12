@@ -207,6 +207,8 @@ function videoCircleAnimation(){
     }
     width();
 
+
+ 
 function imgEffect(){
     Shery.imageEffect(".img-box", {
       style: 1,
