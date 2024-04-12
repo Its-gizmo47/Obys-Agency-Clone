@@ -2,6 +2,7 @@ function mouseFollower(){
     document.addEventListener("mousemove",(e)=>{
         gsap.to("#crsr-circle",{
             opacity:1,
+            zIndex: 2999,
         });
         gsap.to("#crsr-circle",{
             x: e.x,
