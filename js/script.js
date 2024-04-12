@@ -1,7 +1,7 @@
 function mouseFollower(){
     document.addEventListener("mousemove",(e)=>{
-        gsap.from("#crsr-circle",{
-            opacity:0,
+        gsap.to("#crsr-circle",{
+            opacity:1,
         });
         gsap.to("#crsr-circle",{
             x: e.x,
