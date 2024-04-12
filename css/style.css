@@ -35,7 +35,7 @@ html,body{
     height: 100%;
     width: 100%;
     color: white;
-/*     cursor: none; */
+    cursor: none;
 }
 
 ::-webkit-scrollbar {
@@ -49,7 +49,7 @@ html,body{
 
 #crsr-circle{
     position: fixed;
-    z-index: 9999;
+    z-index: 9990;
     -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
