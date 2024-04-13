@@ -57,7 +57,7 @@ html,body{
     width: 2.5vw;
     opacity: 0;
     border-radius: 50%;
-    border: 2px solid #adadad;
+    border: 1.5px solid #adadad;
     mix-blend-mode: difference;
     pointer-events: none;
 }
@@ -68,9 +68,11 @@ html,body{
     pointer-events: none;
     opacity: 0;
     position: absolute;
-    -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    left: 50%;
+    top: 300px;
+    -webkit-transform: translate(-50%, -27%);
+        -ms-transform: translate(-50%, -27%);
+            transform: translate(-50%, -27%);
 }
 .flag-effect img{
     height: 30vw;
@@ -148,7 +150,7 @@ html,body{
     height: 14vh;
     display: inline-block;
     font-family: inherit;
-    animation: loaderNowAnimaton 2.5s infinite  ease-in-out reverse;
+    animation: loaderNowAnimaton 1.6s infinite  ease-in-out reverse;
 }
 
 @-webkit-keyframes loaderNowAnimaton {
@@ -385,6 +387,7 @@ main{
 #page1 #page1-hero{
     height: 80vh;
     padding-top: 7vw;
+    position: relative;
 }
 #page1 #page1-hero .hero{
     overflow: hidden;
