@@ -119,6 +119,7 @@ function videoCircleAnimation(){
 
     let page2Vid = document.querySelector("#page2-video");
     let vid = document.querySelector("#page2-video video");
+    let mediaCircle = document.querySelector("#page2-video #video-circle")
 
     function videoCntrl(){
         let videoCircleIcon = document.querySelector("#video-circle i");
@@ -160,90 +161,88 @@ function videoCircleAnimation(){
                     duration: .2,
                 });
                 
-            }
-        }
-        function chk(){
-            if(e.target.matches("#video-overlay-img")){
-                playVid();
-            }
-        }
-        chk();
+             }
+            }    
 
-    function vidCircle(){
-            // video Mouse Leave event handler
+            function chk(){
+                if(e.target.matches("#video-overlay-img")){
+                    playVid();
+                }
+            }
+            chk();                
 
-        page2Vid.addEventListener("mouseleave", (e)=>{
-            gsap.to("#crsr-circle",{
-                opacity: 1,
-                scale:1,
-            });
-            gsap.to("#video-circle",{
-                left : "80%",
-                top: "0%",
+    });
+    // video Mouse Leave event handler
+
+
+    // video Mouse Enter event handler
+
+    page2Vid.addEventListener("mouseenter", ()=>{
+        gsap.to("#crsr-circle",{
+            opacity: 0,
+            scale:0,
+        });
+
+        // video Mouse Move event handler
+
+        page2Vid.addEventListener("mousemove",(evt)=>{
+            gsap.to(mediaCircle,{
+                left: evt.x - page2Vid.getBoundingClientRect().x,
+                top : evt.y - page2Vid.getBoundingClientRect().y,
                 duration: .4,
+            });
+        });
+        
+    });
+
+    page2Vid.addEventListener("mouseleave", (e)=>{
+        gsap.to("#crsr-circle",{
+            opacity: 1,
+            scale:1,
+        });
+        gsap.to(mediaCircle,{
+            left : "80%",
+            top: "0%",
+            duration: .5,
         });
     });
 
-        // video Mouse Enter / Mouse Move event handler
-        page2Vid.addEventListener("mouseenter", ()=>{
-            page2Vid.addEventListener("mousemove",(evt) =>{
-                    gsap.to("#crsr-circle",{
-                        opacity: 0,
-                        scale:0,
-                    });
-                    gsap.to("#video-circle",{
-                        left : evt.x - 450,
-                        top : evt.y - 200,
-                        duration: .4,
-                });
-            });
-        });
-    }
-    function width(){
-        var width = window.innerWidth;
-        if(width >= 768){
-            vidCircle();
-        }
-    }
-    width();
-    });
+    
 } 
 
 
 
 function flagEffect(){
 
-    let flagContainer = document.querySelector("#page1 #page1-hero #hero3 h1");
-    let entered = false;
-    document.addEventListener("mousemove",(e)=>{
-        gsap.to(".flag-effect",{
-            x: e.x,
-            y: e.y,
-            duration: .1,
-            zIndex: 1,
+    let flagContainer = document.querySelectorAll("#page1 #page1-hero #hero3 h1 span");
+    let flagRelated = document.querySelector("#page1-hero .flag");
+
+    flagContainer.forEach((flag)=>{
+
+        flag.addEventListener("mouseenter",()=>{
+                gsap.to(".flag-effect",{
+                    opacity: 1,
+                    duration: .4,
+                });
+
+                flag.addEventListener("mousemove",(e)=>{
+                    gsap.to(".flag-effect",{
+                        top: e.y - flagRelated.getBoundingClientRect().y,
+                        left: e.x - flagRelated.getBoundingClientRect().x,
+                        duration: .6,
+                    });
+                });
         });
+        flag.addEventListener("mouseleave",()=>{
+                gsap.to(".flag-effect",{
+                    opacity: 0,
+                    duration: .4,
+                });
+
+        });
+
     });
 
-    flagContainer.addEventListener("mouseenter",()=>{
-        entered = true;
-        if(entered === true){
-            gsap.to(".flag-effect",{
-                opacity: 1,
-                duration: .6,
-            });
-        }
-        
-     });
-     flagContainer.addEventListener("mouseleave",()=>{
-        entered = false;
-        if(entered === false){
-            gsap.to(".flag-effect",{
-                opacity: 0,
-                duration: .1,
-            });
-        }
-
-     });
     
 }
 
@@ -265,12 +264,12 @@ mouseFollower();
 loaderAnimation();
 videoCircleAnimation();
 locomotiveAnimation();
+flagEffect();
 
 function widthEffect(){
     var width = window.innerWidth;
     if(width >= 768){
         imgEffect();
-        flagEffect();
     }
 }
 widthEffect();
