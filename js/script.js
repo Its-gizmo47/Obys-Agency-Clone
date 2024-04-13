@@ -130,11 +130,10 @@ function videoCircleAnimation(){
 
 
     // video Click event handler
-
-    page2Vid.addEventListener("click",(e)=>{
-        // const onEvent = e.target.matches(page2Vid)
+    
+ page2Vid.addEventListener("click",(e)=>{
         
-        function playVid(){
+        function playVid(scl){
             if(!vid.paused){  
                 videoCntrl();
                 vid.pause();
@@ -152,7 +151,7 @@ function videoCircleAnimation(){
                 videoCntrl();
                 vid.play();
                 gsap.to("#page2 #video-circle",{
-                    scale: 0.6,
+                    scale: scl,
                     duration: 0.3,
                     ease: Back.easeInOut,
                 },);
@@ -161,18 +160,25 @@ function videoCircleAnimation(){
                     duration: .2,
                 });
                 
-             }
-            }    
-
-            function chk(){
-                if(e.target.matches("#video-overlay-img")){
-                    playVid();
-                }
             }
-            chk();                
+        }
 
+        function chk(){
+            if(e.target.matches("#video-overlay-img")){
+                function widthFn(){
+                    var width = window.innerWidth;
+                console.log(width);
+                    if(width <= 768){
+                        playVid("0");
+                    } else{
+                        playVid("0.6");
+                    }
+                }
+                widthFn();
+            }
+        }
+        chk();
     });
-    // video Mouse Leave event handler
 
 
     // video Mouse Enter event handler
@@ -194,6 +200,8 @@ function videoCircleAnimation(){
         });
         
     });
+
+    // video Mouse Leave event handler
 
     page2Vid.addEventListener("mouseleave", (e)=>{
         gsap.to("#crsr-circle",{
@@ -264,12 +272,12 @@ mouseFollower();
 loaderAnimation();
 videoCircleAnimation();
 locomotiveAnimation();
-flagEffect();
 
 function widthEffect(){
     var width = window.innerWidth;
     if(width >= 768){
         imgEffect();
+        flagEffect();
     }
 }
 widthEffect();
