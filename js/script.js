@@ -64,10 +64,10 @@ function loaderAnimation(){
         duration: 0.4,
     }, "-=.2");
     tl.from("#page1-hero h1",{
-        y:120,
-        stagger:0.2,
+        y:70,
+        stagger:0.1,
         duration: 0.5,
-        opacity:0,
+        opacity: 0,
     },"-=.3");
     tl.to("#loader",{
         display: "none",
